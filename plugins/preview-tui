@@ -537,3 +537,6 @@ else
         toggle_preview "$1" &
     fi
 fi
+
+#@ this only used in nnn preview-tui
+tmux source-file -t 3 /home/x/.config/nnn/tmux-nnn.conf
