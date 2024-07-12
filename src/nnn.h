@@ -263,7 +263,7 @@ static struct key bindings[] = {
 	/* Run a plugin */
 	{ ';',            SEL_PLUGIN },
 	/* Show total size of listed selection */
-	{ 'S',            SEL_SELSIZE },
+	{ 's',            SEL_SELSIZE }, //@ changed keybinding. 'S'->'s' @/ 
 	/* Run command */
 	{ '!',            SEL_SHELL },
 	{ CONTROL(']'),   SEL_SHELL },
@@ -274,7 +274,7 @@ static struct key bindings[] = {
 	/* Lock screen */
 	{ '0',            SEL_LOCK },
 	/* Manage sessions */
-	{ 's',            SEL_SESSIONS },
+	{ 'S',            SEL_SESSIONS }, //@ changed keybinding. 's'->'S' @/ 
 	/* Export list */
 	{ '>',            SEL_EXPORT },
 	/* Set time type */
