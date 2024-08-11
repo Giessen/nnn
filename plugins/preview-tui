@@ -96,7 +96,7 @@
 #
 # Shell: Bash (for environment manipulation through arrays)
 # Authors: Todd Yamakawa, Léo Villeveygoux, @Recidiviste, Mario Ortiz Manero, Luuk van Baal, @WanderLanz, @flipflop133
-export LESSKEYIN=${HOME}/.config/lesskey-nnn #@ special config for lesskey used by nnn only
+export LESSKEYIN=${HOME}/.config/nnn/lesskey-nnn #@ special config for lesskey used by nnn only
 
 # Configurable environment variables:
 NNN_SPLIT=${NNN_SPLIT:-}                                   # permanent split direction

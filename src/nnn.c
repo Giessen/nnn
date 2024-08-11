@@ -5157,7 +5157,7 @@ static void show_help(const char *path)
 	       "9G ^E  End%20^J  Toggle auto-advance on open\n"
 	      "8B (,)  Book(mark)%11b ^/  Select bookmark\n"
 		"a1-4  Context%11(Sh)Tab  Cycle/new context\n"
-	    "62Esc ^Q  Quit%19^y  Next young\n"
+	    "62Esc ^Q ^X  Quit%19^y  Next young\n" //@ changed keybinding. added ^X @/
 		 "b^G  QuitCD%18Q  Pick/err, quit\n"
 		  "cq  Quit context\n"
 	"0\n"
@@ -5176,7 +5176,7 @@ static void show_help(const char *path)
 	          "ca  Select all%14A  Invert sel\n"
 	       "9p ^P  Copy here%12w ^W  Cp/mv sel as\n"
 	       "9v ^V  Move here%15E  Edit sel list\n"
-	       "9x ^X  Delete or trash%09s  Listed sel size *\n" //@ changed keybinding @/
+	       "9x  Delete or trash%09s  Listed sel size *\n" //@ changed keybinding. removed ^X @/
 		  "cX  Delete (rm -rf)%07Esc  Send to FIFO\n"
 	"0\n"
 	"1MISC\n"
