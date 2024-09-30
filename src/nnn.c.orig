@@ -3145,30 +3145,30 @@ try_quit:
 #endif
 
 		/* Handle Alt+key */
-//		if (c == ESC) {
-//			timeout(0);
-//			i = get_wch(&c);
-//			if (i != ERR) {
-//				if (c == ESC)
-//					c = CONTROL('L');
-//				else {
-//					unget_wch(c);
-//					//@ c = ';';
-//				}
-//				settimeout();
-//			} else if (escaped) {
-//				settimeout();
-//				c = CONTROL('Q');
-//			} else {
-//#ifndef NOFIFO
-//				if (!g_state.fifomode)
-//					notify_fifo(TRUE); /* Send hovered path to NNN_FIFO */
-//#endif
-//				escaped = TRUE;
-//				settimeout();
-//				goto try_quit;
-//			}
-//		}
+		if (c == ESC) {
+			timeout(0);
+			i = get_wch(&c);
+			if (i != ERR) {
+				if (c == ESC)
+					c = CONTROL('L');
+				else {
+					unget_wch(c);
+					c = ';';
+				}
+				settimeout();
+			} else if (escaped) {
+				settimeout();
+				c = CONTROL('Q');
+			} else {
+#ifndef NOFIFO
+				if (!g_state.fifomode)
+					notify_fifo(TRUE); /* Send hovered path to NNN_FIFO */
+#endif
+				escaped = TRUE;
+				settimeout();
+				goto try_quit;
+			}
+		}
 
 		if (i == ERR && presel == MSGWAIT)
 			c = (cfg.filtermode || filterset()) ? FILTER : CONTROL('L');
@@ -3455,14 +3455,14 @@ static int filterentries(char *path, char *lastname)
 		}
 #endif
 		case ESC:
-//			if (handle_alt_key(ch) != ERR) {
-//				if (*ch == ESC) /* Handle Alt+Esc */
-//					*ch = 'q'; /* Quit context */
-//				else {
-//					//@ unget_wch(*ch);
-//					//@ *ch = ';'; /* Run plugin */
-//				}
-//			}
+			if (handle_alt_key(ch) != ERR) {
+				if (*ch == ESC) /* Handle Alt+Esc */
+					*ch = 'q'; /* Quit context */
+				else {
+					unget_wch(*ch);
+					*ch = ';'; /* Run plugin */
+				}
+			}
 			goto end;
 		}
 
@@ -3684,10 +3684,9 @@ static char *xreadline(const char *prefill, const char *prompt)
 				len -= pos;
 				pos = 0;
 				continue;
-			case ESC: /* Exit prompt on Esc */
-//@			case ESC: /* Exit prompt on Esc, but just filter out Alt+key */
-//@				if (handle_alt_key(ch) != ERR)
-//@					continue;
+			case ESC: /* Exit prompt on Esc, but just filter out Alt+key */
+				if (handle_alt_key(ch) != ERR)
+					continue;
 
 				len = 0;
 				goto END;
@@ -5175,7 +5174,7 @@ static void show_help(const char *path)
 		  "c.  Toggle hidden%05Alt+Esc  Unfilter, quit context\n"
 	"0\n"
 	"1FILES\n"
-	       "9O ^O  Open with%15n  Create new/link\n" //@ change from o -> O
+	       "9o ^O  Open with%15n  Create new/link\n"
 	       "9f ^F  File stats%14d  Detail mode toggle\n"
 		 "b^R  Rename/dup%14r  Batch rename\n"
 		  "cz  Archive%17e  Edit file\n"
@@ -5188,8 +5187,7 @@ static void show_help(const char *path)
 		  "cX  Delete (rm -rf)%07Esc  Send to FIFO\n"
 	"0\n"
 	"1MISC\n"
-//@	      "8Alt ;  Select plugin%11=  Launch app\n"
-	      "9;  Select plugin%11=  Launch app\n"	      
+	      "8Alt ;  Select plugin%11=  Launch app\n"
 	       "9! ^]  Shell%19]  Cmd prompt\n"
 		  "cc  Connect remote%10u  Unmount remote/archive\n"
 	       "9t ^T  Sort toggles%12S  Manage session *\n" //@ changed keybinding @/
