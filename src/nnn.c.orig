@@ -3153,7 +3153,7 @@ try_quit:
 					c = CONTROL('L');
 				else {
 					unget_wch(c);
-					c = ';';
+					//@ c = ';';
 				}
 				settimeout();
 			} else if (escaped) {
@@ -3460,7 +3460,7 @@ static int filterentries(char *path, char *lastname)
 					*ch = 'q'; /* Quit context */
 				else {
 					unget_wch(*ch);
-					*ch = ';'; /* Run plugin */
+					//@ *ch = ';'; /* Run plugin */
 				}
 			}
 			goto end;
@@ -3684,9 +3684,10 @@ static char *xreadline(const char *prefill, const char *prompt)
 				len -= pos;
 				pos = 0;
 				continue;
-			case ESC: /* Exit prompt on Esc, but just filter out Alt+key */
-				if (handle_alt_key(ch) != ERR)
-					continue;
+			case ESC: /* Exit prompt on Esc */
+//@			case ESC: /* Exit prompt on Esc, but just filter out Alt+key */
+//@				if (handle_alt_key(ch) != ERR)
+//@					continue;
 
 				len = 0;
 				goto END;
@@ -5187,7 +5188,8 @@ static void show_help(const char *path)
 		  "cX  Delete (rm -rf)%07Esc  Send to FIFO\n"
 	"0\n"
 	"1MISC\n"
-	      "8Alt ;  Select plugin%11=  Launch app\n"
+//@	      "8Alt ;  Select plugin%11=  Launch app\n"
+	      "9;  Select plugin%11=  Launch app\n"	      
 	       "9! ^]  Shell%19]  Cmd prompt\n"
 		  "cc  Connect remote%10u  Unmount remote/archive\n"
 	       "9t ^T  Sort toggles%12S  Manage session *\n" //@ changed keybinding @/
