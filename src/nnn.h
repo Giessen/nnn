@@ -244,7 +244,7 @@ static struct key bindings[] = {
 	{ CONTROL('X'),   SEL_QUITCTX }, //@ changed SEL_TRASH -> SEL_QUITCTX @/
 	{ 'X',            SEL_RM_ONLY },
 	/* Open in a custom application */
-	{ 'o',            SEL_OPENWITH },
+	{ 'O',            SEL_OPENWITH }, //@ changed o -> O
 	{ CONTROL('O'),   SEL_OPENWITH },
 	/* Create a new file */
 	{ 'n',            SEL_NEW },

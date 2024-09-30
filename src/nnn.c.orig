@@ -3145,30 +3145,30 @@ try_quit:
 #endif
 
 		/* Handle Alt+key */
-		if (c == ESC) {
-			timeout(0);
-			i = get_wch(&c);
-			if (i != ERR) {
-				if (c == ESC)
-					c = CONTROL('L');
-				else {
-					unget_wch(c);
-					//@ c = ';';
-				}
-				settimeout();
-			} else if (escaped) {
-				settimeout();
-				c = CONTROL('Q');
-			} else {
-#ifndef NOFIFO
-				if (!g_state.fifomode)
-					notify_fifo(TRUE); /* Send hovered path to NNN_FIFO */
-#endif
-				escaped = TRUE;
-				settimeout();
-				goto try_quit;
-			}
-		}
+//		if (c == ESC) {
+//			timeout(0);
+//			i = get_wch(&c);
+//			if (i != ERR) {
+//				if (c == ESC)
+//					c = CONTROL('L');
+//				else {
+//					unget_wch(c);
+//					//@ c = ';';
+//				}
+//				settimeout();
+//			} else if (escaped) {
+//				settimeout();
+//				c = CONTROL('Q');
+//			} else {
+//#ifndef NOFIFO
+//				if (!g_state.fifomode)
+//					notify_fifo(TRUE); /* Send hovered path to NNN_FIFO */
+//#endif
+//				escaped = TRUE;
+//				settimeout();
+//				goto try_quit;
+//			}
+//		}
 
 		if (i == ERR && presel == MSGWAIT)
 			c = (cfg.filtermode || filterset()) ? FILTER : CONTROL('L');
@@ -3455,14 +3455,14 @@ static int filterentries(char *path, char *lastname)
 		}
 #endif
 		case ESC:
-			if (handle_alt_key(ch) != ERR) {
-				if (*ch == ESC) /* Handle Alt+Esc */
-					*ch = 'q'; /* Quit context */
-				else {
-					unget_wch(*ch);
-					//@ *ch = ';'; /* Run plugin */
-				}
-			}
+//			if (handle_alt_key(ch) != ERR) {
+//				if (*ch == ESC) /* Handle Alt+Esc */
+//					*ch = 'q'; /* Quit context */
+//				else {
+//					//@ unget_wch(*ch);
+//					//@ *ch = ';'; /* Run plugin */
+//				}
+//			}
 			goto end;
 		}
 
