@@ -453,15 +453,14 @@ image_preview() {
         wezterm imgcat "$3" &
     elif exists ueberzug && [[ "$NNN_PREVIEWIMGPROG" == +(|ueberzug) ]]; then
         ueberzug_layer "$1" "$2" "$3" && return
-    #@ prioritized over others
-    elif exists img2sixel && [[ "$NNN_PREVIEWIMGPROG" == +(|img2sixel) ]]; then
-        img2sixel -g "$3" &
     elif exists catimg && [[ "$NNN_PREVIEWIMGPROG" == +(|catimg) ]]; then
         catimg "$3" &
     elif exists viu && [[ "$NNN_PREVIEWIMGPROG" == +(|viu) ]]; then
         viu -t "$3" &
     elif exists chafa && [[ "$NNN_PREVIEWIMGPROG" == +(|chafa) ]]; then
         chafa "$3" &
+    elif exists img2sixel && [[ "$NNN_PREVIEWIMGPROG" == +(|img2sixel) ]]; then
+        img2sixel -g "$3" &
     else
         fifo_pager print_bin_info "$3" && return
     fi
