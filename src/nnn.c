@@ -7182,11 +7182,11 @@ nochange:
 				if (cfg.nonavopen)
 				{
 					/*@set right arrow to switch focus on tmux pane #1 (pane for preview)*/
-					char *tmp_ = getenv("TERM");
-					if(tmp_ && strstr(tmp_,"tmux") != NULL)
-					{
-						system("tmux select-pane -t 1");
-					}
+					// char *tmp_ = getenv("TERM");
+					// if(tmp_ && strstr(tmp_,"tmux") != NULL)
+					// {
+					// 	system("tmux select-pane -t 1");
+					// }
 					
 					goto nochange;
 				}
